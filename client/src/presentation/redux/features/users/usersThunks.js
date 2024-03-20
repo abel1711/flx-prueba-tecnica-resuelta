@@ -1,4 +1,4 @@
-import { userApi } from "../../../api/user-api";
+import { userApi } from "../../../../config/api/user-api";
 import { setUsers, startFetch } from "./usersSlice"
 
 
@@ -19,6 +19,11 @@ export const getUsersThunks = (page = 0) => {
 
         setTimeout(async () => {
             try {
+
+                /**
+                 * se realizan dos consultas a la api para poder saber el total de documentos para poder hacer el paginado,
+                 * ya que json-server no devuelve este dato
+                 */
 
                 const [{ data: total }, { data }] = await Promise.all([
                     userApi.get(`/users?${urlFilter}`),

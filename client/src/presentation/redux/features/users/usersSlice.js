@@ -38,4 +38,9 @@ export const usersSlice = createSlice({
     }
 })
 
-export const { setUsers, startFetch, setFilterByName, setFilterByStatus } = usersSlice.actions
+export const {
+    setUsers,
+    startFetch,
+    setFilterByName,
+    setFilterByStatus
+} = usersSlice.actions

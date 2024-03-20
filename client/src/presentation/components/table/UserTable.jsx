@@ -14,7 +14,8 @@ export const UserTable = () => {
             loading={isLoading}
             pagination={{
                 ...pagination,
-                onChange: (page) => getUsers(page - 1)
+                onChange: (page) => getUsers(page - 1),
+                
             }}
             size='small'
         />
