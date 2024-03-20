@@ -449,6 +449,24 @@
       "email": "grace.allen@example.com",
       "status": "active",
       "age": 32
+    },
+    {
+      "username": "asdag",
+      "email": "abelamieva@gmail.com",
+      "name": "sadf",
+      "lastname": "sadf",
+      "status": "active",
+      "age": "12",
+      "id": "9f48e73a-4e2f-4d49-9fac-c76caa1b00ab"
+    },
+    {
+      "username": "Marta",
+      "email": "juana@juana.com",
+      "name": "Martina",
+      "lastname": "Juana",
+      "status": "inactive",
+      "age": "46",
+      "id": "53ac2c43-3aa9-4b4e-8527-3298f7b45384"
     }
   ]
 }

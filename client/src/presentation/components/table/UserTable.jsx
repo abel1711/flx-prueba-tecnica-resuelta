@@ -1,22 +1,21 @@
+import { useSelector } from 'react-redux';
 import { Table } from 'antd';
 import { useUserTable } from '../../hooks';
 import './users-table.css';
-import { useEffect } from 'react';
+
 export const UserTable = () => {
-
-    const { columns, users, tableParams, loading, handleTableChange } = useUserTable();
-    useEffect(() => {
-        console.log(tableParams)
-    }, [tableParams])
+    const { users, pagination, isLoading } = useSelector(state => state.appState);
+    const { columns, getUsers } = useUserTable();
     return (
-
         <Table
             columns={columns}
             rowKey={(record) => record.id}
             dataSource={users}
-            loading={loading}
-            pagination={{ ...tableParams.pagination }}
-            onChange={handleTableChange}
+            loading={isLoading}
+            pagination={{
+                ...pagination,
+                onChange: (page) => getUsers(page - 1)
+            }}
             size='small'
         />
 

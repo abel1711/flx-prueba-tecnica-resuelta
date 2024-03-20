@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react"
-import { userApi } from "../api/user-api";
 import { Button, Tag } from "antd";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getUsersThunks } from "../redux/features/users/usersThunks";
 
 const columns = [
     {
@@ -38,63 +39,25 @@ const columns = [
 
 export const useUserTable = () => {
 
-    const [tableParams, setTableParams] = useState({
-        pagination: {
-            current: 1,
-            pageSize: 9,
-            total: 0,
-        },
-    });
+    const dispatch = useDispatch();
+    const { filter } = useSelector(state => state.appState);
 
-    const [users, setUsers] = useState([]);
-    const [loading, setLoading] = useState(true);
-
+    
     useEffect(() => {
         getUsers();
     }, [])
 
-    const handleTableChange = (pagination) => {
-        setTableParams((prevParams) => ({
-            ...prevParams,
-            pagination,
-        }));
+    useEffect(() => {
+        getUsers()
+    }, [filter]);
+
+    const getUsers = (page = 0) => {
+        dispatch(getUsersThunks(page));
     };
 
-    const getUsers = async (page = 1) => {
-
-        setLoading(true);
-        setTimeout(async () => {
-
-
-            try {
-
-                const { data } = await userApi.get(`/`);
-
-                setUsers(data);
-
-                setTableParams((prevParams) => ({
-                    ...prevParams,
-                    pagination: {
-                        ...prevParams.pagination,
-                        total: data.length,
-                        current: page
-                    },
-                }));
-
-                setLoading(false);
-            } catch (error) {
-                console.log(error)
-                setLoading(false);
-            }
-        }, 500);
-    }
     return {
-        users,
-        loading,
         columns,
-        tableParams,
-        handleTableChange,
         getUsers
-    }
-}
+    };
+};
 
