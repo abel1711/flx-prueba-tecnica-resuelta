@@ -5,7 +5,7 @@ import { setUsers, startFetch } from "./usersSlice"
 
 export const getUsersThunks = (page = 0) => {
 
-    const url = `/users?_start=${page * 10}&_limit=10`;
+    const url = `/users?_start=${page * 9}&_limit=9`;
 
     return async (dispatch, getState) => {
 

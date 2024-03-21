@@ -26,6 +26,7 @@ export const UserTable = () => {
                 ...pagination,
                 onChange: (page) => getUsers(page - 1),
                 showSizeChanger: false,
+                pageSize: 9
             }}
             size='small'
         />
