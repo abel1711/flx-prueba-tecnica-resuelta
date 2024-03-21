@@ -29,18 +29,23 @@ export const usersSlice = createSlice({
             };
             state.isLoading = false;
         },
+        setUserEdited: (state, action) => {
+            const { payload } = action;
+            state.users = state.users.map(user => user.id === payload.id ? payload : user);
+        },
         setFilterByName: (state, action) => {
             state.filter.name = action.payload
         },
         setFilterByStatus: (state, action) => {
             state.filter.status = action.payload
-        }
+        },
     }
 })
 
 export const {
+    setFilterByName,
+    setFilterByStatus,
+    setUserEdited,
     setUsers,
     startFetch,
-    setFilterByName,
-    setFilterByStatus
 } = usersSlice.actions
