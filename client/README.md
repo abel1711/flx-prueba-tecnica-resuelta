@@ -52,12 +52,12 @@ Es necesario simular un tiempo de carga entre las peticiones con un setTimeOut, 
 
 ### 5. A tener en cuenta
 
-- Disfrute mucho del desafío, no tenia conocimientos previos de `Ant Desing` o `Json-server` así que el desafío fue mayor, espero haber satisfecho las expectativas y haber cumplido con el diseño proporcionado de figma.
+- Disfrute mucho del desafío, no tenia conocimientos previos de `Ant Desing` o `Json-server` así que el desafío fue mayor, espero haber satisfecho las expectativas y haber cumplido con el diseño proporcionado de figma, lo unico que no encontre como hacer, es darle la misma apariencia a los botones de paginación de la tabla.
 - A mi parecer falto mostrar algún mensaje o alerta confirmando o no si la acción se realizo (crear usuario, editar usuario, eliminar usuario), no se realizo porque en el diseño de figma no se incluyo, y por temas de tiempo no se implemento pero si se muestra un loading con un setTimeout de 1s.
 - Se utilizó redux solo para mantener a los usuarios, la paginación, filtro y un isLoading para mostrar la tabla, que a su vez se trabaja con un hook.
 - Para crear, editar o eliminar un usuario se utilizaron hooks para el manejo de los modales, los state estan dentro de los hooks asi como tambien las peticiones, lo realice así para no tener que manejar todo con redux, pero se podría haber separado las peticiones asi como lo hice para obtener los usuarios y aplicar el filtro.
 - Se utilizo patron adaptador para uuid, por temas de tiempo no se utilizo para axios pero si se implemento una configuración inicial del mismo.
-- Tener en cuenta que esta activado el modo estricto de react (se disparan useEffect dos veces) .
+- Tener en cuenta que esta activado el modo estricto de react (se disparan useEffect dos veces).
 
 <a id="sources"></a>
 ## Recursos 
