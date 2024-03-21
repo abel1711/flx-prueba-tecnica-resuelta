@@ -2,7 +2,7 @@
 # Resolución de Prueba Técnica I+D Team - CRUD de Usuarios en React
 
 Esta es mi resolución de la prueba técnica para desarrolladores FullStack de Flexxus! 
-En este proyecto, me desafiaron a construir un CRUD de usuarios utilizando React. 
+En esta carpeta esta el frontend creado utilizando React + Vite. 
 
 
 `Sigue las instrucciones a continuación para comenzar`.
@@ -10,46 +10,18 @@ En este proyecto, me desafiaron a construir un CRUD de usuarios utilizando React
 
 ## Instrucciones
 
-### 1. Clon del Repositorio
+### 1. Inicializar el proyecto
 
-Deberás seguir las instrucciones de github, para clonar el repositorio en tu maquina de manera local.
-
-### 2. Inicializar el proyecto
-
-Entra al directorio del proyecto, dentro del repositorio tendrás `tres carpetas`:
-
-#### CARPETA - DOCS
-En esta carpeta encontrarás ` los ejercicios de algoritmos y estructuras de datos en JavaScript resueltos`, con sus respectivos test, también tendrás un readme.md con las instrucciones del mismo.
-
-Además tendrás el archivo `consultas.sql` con una lista de `consultas SQL` resueltas.
-
-#### CARPETA - API
-
-Tendras disponible un `json-server` con una lista de usuarios ficticios. 
-
-Para inicializar el servidor deberas ejecutar los siguientes comandos:
-
-```bash
-cd ./api
-npm install
-npm run server
-```
-Por defecto se inicializará en el puerto 4000, por favor levanta el server para poder trabajar con la base de datos.
-
-#### CARPETA - CLIENT
-
-Dentro de la misma esta el frontend en React creado con Vite.
 Para inicializarlo realiza los siguientes pasos:
 
 ```bash
-cd ./client
 npm install
 npm run dev
 ```
 Por defecto se inicializará en el puerto 3000.
+Recuerda levantar el servido que esta en el root/api
 
-
-### 3. Normas de desarrollo pedidas
+### 2. Normas de desarrollo pedidas
 
 Desarrollar la aplicación siguiendo las especificaciones proporcionadas. Asegúrate de seguir las siguientes normas de desarrollo:
 
@@ -92,3 +64,5 @@ Es necesario simular un tiempo de carga entre las peticiones con un setTimeOut, 
 
 ## Licencia
 Este proyecto está bajo la Licencia MIT. Consulta el archivo `LICENSE` para obtener más detalles.
+
+
