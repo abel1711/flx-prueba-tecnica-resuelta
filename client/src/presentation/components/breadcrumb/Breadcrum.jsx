@@ -1,16 +1,12 @@
-import { useId } from 'react';
 import { Breadcrumb } from 'antd';
 import './breadcrumb.css';
 
-export const Breadcrum = ({ labels = [] }) => {
+export const Breadcrum = ({ items = [] }) => {
 
     return (
-        <Breadcrumb className='breadcrumb'>
-            {
-                labels.map(label => (
-                    <Breadcrumb.Item key={useId()}>{label}</Breadcrumb.Item>
-                ))
-            }
-        </Breadcrumb>
+        <Breadcrumb
+        className='breadcrumb'
+        items={items}
+        />
     )
 }
