@@ -1,4 +1,4 @@
-import { Tag } from "antd";
+import { Flex, Tag } from "antd";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { ModalDelUser } from "../components/modalDelUser/ModalDelUser";
@@ -30,18 +30,20 @@ const COLUMNS = [
     },
     {
         title: 'Acciones',
-        render: (item) => (<>
-            <ModalUser
-                editMode
-                user={item}
-                labelButton="Editar"
-                typeButton="link"
-            />
-            <ModalDelUser
-                user={item}
-            />
-        </>),
-        width: '15%'
+        render: (item) => (
+            <Flex >
+                <ModalUser
+                    editMode
+                    user={item}
+                    labelButton="Editar"
+                    typeButton="link"
+                />
+                <ModalDelUser
+                    user={item}
+                />
+            </Flex>
+        ),
+        width: '10%'
     },
 ];
 
