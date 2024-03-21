@@ -22,7 +22,7 @@ export const getUsersThunks = (page = 0) => {
 
                 /**
                  * se realizan dos consultas a la api para poder saber el total de documentos para poder hacer el paginado,
-                 * ya que json-server no devuelve este dato
+                 * ya que json-server no devuelve este dato, se utiliza Promise.all para disparar las dos promesas juntas.
                  */
 
                 const [{ data: total }, { data }] = await Promise.all([
@@ -33,6 +33,6 @@ export const getUsersThunks = (page = 0) => {
             } catch (error) {
                 console.log(error)
             }
-        }, 500);
+        }, 1000);
     }
 }

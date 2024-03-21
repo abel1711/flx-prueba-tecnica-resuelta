@@ -1,8 +1,20 @@
-import { Button, Divider, Flex, Form, Input, Modal, Select, Spin } from 'antd';
-import React from 'react';
-
+import {
+    Button,
+    Divider,
+    Flex,
+    Form,
+    Input,
+    Modal,
+    Select,
+    Spin
+} from 'antd';
 import { useModalUser } from '../../hooks/useModalUser';
+
 import './modal-user.css';
+
+/**
+ * no se exporto este componente porque solo se usa en este modal 
+ */
 
 const CustomFormItem = ({ name = '', label = '', rules = [], placeholder = '', type = '' }) => {
     return (
@@ -19,78 +31,94 @@ const CustomFormItem = ({ name = '', label = '', rules = [], placeholder = '', t
     )
 }
 
-export const ModalUser = () => {
+/**
+ * no se exporto este componente porque solo se usa en este modal 
+ */
+
+const CustomFlex = ({ children, justify }) => {
+    return (
+        <Flex gap={'large'} justify={justify}>
+            {children}
+        </Flex>
+    );
+}
+
+export const ModalUser = ({ user, labelButton = 'Agregar Usuario', typeButton = 'primary', editMode = false }) => {
 
     const {
         isLoading,
         isOpen,
-        rules,
+        RULES,
+        INITIALFORM,
         handleSubmit,
         openModal,
         closeModal,
-    } = useModalUser()
+    } = useModalUser();
+
+    const labelModal = editMode ? 'Editar usuario' : 'Agregar usuario';
 
     return (
-        <div>
-            <Button type='primary' onClick={openModal}>
-                Agregar Usuario
+        <>
+            <Button type={typeButton} onClick={openModal}>
+                {labelButton}
             </Button>
             <Modal
                 destroyOnClose
                 centered
-                title="Agregar usuario"
+                title={labelModal}
                 open={isOpen}
-                onOk={handleSubmit}
                 confirmLoading={isLoading}
                 onCancel={closeModal}
                 width={'572px'}
-                footer={[]}
+                footer={null}
             >
                 <Form
                     name="Form-user"
                     layout="vertical"
                     disabled={isLoading}
-                    onFinish={handleSubmit}
+                    onFinish={(values) => handleSubmit(values, user)}
                     autoComplete='off'
+                    initialValues={user ? user : INITIALFORM}
                 >
                     <Divider />
-                    <Flex gap={'large'} >
+                    <CustomFlex >
                         <CustomFormItem
                             name='username'
                             label='Usuario'
-                            rules={rules.username}
+                            rules={RULES.username}
                             placeholder='johndoe'
                         />
                         <CustomFormItem
                             name='email'
                             label='Email'
-                            rules={rules.email}
+                            rules={RULES.email}
                             placeholder='johndoe@domain.com'
                         />
-                    </Flex>
+                    </CustomFlex>
 
-                    <Flex gap={'large'}>
+                    <CustomFlex >
                         <CustomFormItem
                             name='name'
                             label='Nombre'
-                            rules={rules.name}
+                            rules={RULES.name}
                             placeholder='John'
                         />
                         <CustomFormItem
                             name='lastname'
                             label='Apellido'
-                            rules={rules.lastname}
+                            rules={RULES.lastname}
                             placeholder='johndoe'
                         />
-                    </Flex>
+                    </CustomFlex>
 
-                    <Flex gap={'large'}>
+                    <CustomFlex >
                         <Form.Item
                             className='item-modal'
                             name='status'
                             label='Estado'
-                            rules={rules.status}
+                            rules={RULES.status}
                             hasFeedback
+                            required={false}
                         >
                             <Select
                                 placeholder='Seleccione un estado'
@@ -112,14 +140,14 @@ export const ModalUser = () => {
                         <CustomFormItem
                             name='age'
                             label='Edad'
-                            rules={rules.age}
+                            rules={RULES.age}
                             placeholder='43'
                             type='number'
                         />
 
-                    </Flex>
+                    </CustomFlex>
                     <Divider />
-                    <Flex
+                    <CustomFlex
                         justify='flex-end'
                     >
                         {
@@ -127,13 +155,13 @@ export const ModalUser = () => {
                                 ? (<Spin size='large' />)
                                 : (
                                     <Button key="submit" type="primary" htmlType="submit">
-                                        Agregar usuario
+                                        {labelModal}
                                     </Button>
                                 )
                         }
-                    </Flex>
+                    </CustomFlex>
                 </Form>
             </Modal>
-        </div>
+        </>
     )
 }

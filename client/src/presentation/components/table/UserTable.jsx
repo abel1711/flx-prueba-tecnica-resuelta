@@ -4,18 +4,27 @@ import { useUserTable } from '../../hooks';
 import './users-table.css';
 
 export const UserTable = () => {
-    const { users, pagination, isLoading } = useSelector(state => state.appState);
-    const { columns, getUsers } = useUserTable();
+
+    const {
+        users,
+        pagination,
+        isLoading
+    } = useSelector(state => state.appState);
+
+    const {
+        COLUMNS,
+        getUsers
+    } = useUserTable();
+
     return (
         <Table
-            columns={columns}
+            columns={COLUMNS}
             rowKey={(record) => record.id}
             dataSource={users}
             loading={isLoading}
             pagination={{
                 ...pagination,
                 onChange: (page) => getUsers(page - 1),
-                
             }}
             size='small'
         />

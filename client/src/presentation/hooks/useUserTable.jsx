@@ -1,9 +1,11 @@
-import { Button, Tag } from "antd";
+import { Tag } from "antd";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { ModalDelUser } from "../components/modalDelUser/ModalDelUser";
+import { ModalUser } from "../components/modalUser/ModalUser";
 import { getUsersThunks } from "../redux/features/users/usersThunks";
 
-const columns = [
+const COLUMNS = [
     {
         title: 'Usuario',
         dataIndex: 'username',
@@ -29,8 +31,15 @@ const columns = [
     {
         title: 'Acciones',
         render: (item) => (<>
-            <Button type="link" onClick={() => console.log(item.id)}>Editar</Button>
-            <Button type="link" onClick={() => console.log(item.id)}>Eliminar</Button>
+            <ModalUser
+                editMode
+                user={item}
+                labelButton="Editar"
+                typeButton="link"
+            />
+            <ModalDelUser
+                user={item}
+            />
         </>),
         width: '15%'
     },
@@ -42,7 +51,7 @@ export const useUserTable = () => {
     const dispatch = useDispatch();
     const { filter } = useSelector(state => state.appState);
 
-    
+
     useEffect(() => {
         getUsers();
     }, [])
@@ -56,7 +65,7 @@ export const useUserTable = () => {
     };
 
     return {
-        columns,
+        COLUMNS,
         getUsers
     };
 };

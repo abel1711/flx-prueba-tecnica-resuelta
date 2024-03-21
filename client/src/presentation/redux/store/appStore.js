@@ -3,9 +3,7 @@ import { usersSlice } from '../features/users/usersSlice';
 
 export const store = configureStore({
     reducer: {
-
         appState: usersSlice.reducer
     },
-
 })
 
