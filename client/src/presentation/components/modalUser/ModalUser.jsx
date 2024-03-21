@@ -50,6 +50,7 @@ export const ModalUser = ({ user, labelButton = 'Agregar Usuario', typeButton = 
         isOpen,
         RULES,
         INITIALFORM,
+        SELECT_OPTIONS,
         handleSubmit,
         openModal,
         closeModal,
@@ -124,16 +125,7 @@ export const ModalUser = ({ user, labelButton = 'Agregar Usuario', typeButton = 
                                 placeholder='Seleccione un estado'
                                 onChange={() => { }}
                                 allowClear
-                                options={[
-                                    {
-                                        value: 'active',
-                                        label: 'Activo',
-                                    },
-                                    {
-                                        value: 'inactive',
-                                        label: 'Inactivo',
-                                    },
-                                ]}
+                                options={SELECT_OPTIONS}
                             />
                         </Form.Item>
 

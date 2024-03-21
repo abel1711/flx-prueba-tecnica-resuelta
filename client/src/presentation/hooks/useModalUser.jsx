@@ -33,7 +33,6 @@ const RULES = {
     ],
     age: [
         { required: true, message: 'Por favor ingresa una edad' },
-        { whitespace: true, message: 'No pueden haber espacios vacíos' },
     ]
 };
 
@@ -45,6 +44,17 @@ const INITIALFORM = {
     status: '',
     age: '',
 }
+
+const SELECT_OPTIONS = [
+    {
+        value: 'active',
+        label: 'Activo',
+    },
+    {
+        value: 'inactive',
+        label: 'Inactivo',
+    },
+]
 
 export const useModalUser = () => {
 
@@ -69,7 +79,8 @@ export const useModalUser = () => {
 
             if (user?.id) {
                 try {
-                    const { data } = await userApi.put(`/users/${user.id}`, values);
+                    const body = { ...values, age: Number(values.age) } //age desde el input viene como string, lo convierto en numero para guardarlo en la base de datos
+                    const { data } = await userApi.put(`/users/${user.id}`, body);
                     dispatch(setUserEdited(data))
                     /**
                      * Se aprovecho que json-server devuelve el usuario editado para agregarlo
@@ -85,6 +96,7 @@ export const useModalUser = () => {
 
                 const body = {
                     ...values,
+                    age: Number(values.age),//age desde el input viene como string, lo convierto en numero para guardarlo en la base de datos
                     id: new Id().newId()
                     /**
                      * se adapto uuid por si en un futuro se necesita generar los ids de otra manera
@@ -101,9 +113,9 @@ export const useModalUser = () => {
                      */
                 } catch (error) {
                     console.log(error)
-                   /**
-                     * Aca falta un feedback para que el usuario sea notificado de que algo salío mal
-                     */
+                    /**
+                      * Aca falta un feedback para que el usuario sea notificado de que algo salío mal
+                      */
                 }
             }
             setIsLoading(false);
@@ -118,6 +130,7 @@ export const useModalUser = () => {
         isLoading,
         RULES,
         INITIALFORM,
+        SELECT_OPTIONS,
         openModal,
         closeModal,
         handleSubmit,
