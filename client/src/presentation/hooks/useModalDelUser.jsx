@@ -21,9 +21,16 @@ export const useModalDelUser = () => {
 		setIsLoading(true);
 		setTimeout(async () => {
 			try {
-				const { data } = userApi.delete(`/users/${id}`);
+				await userApi.delete(`/users/${id}`);
+				/**
+				 * En este punto Json-server no me devuelve "{}" por eso se hace el dispatch para traer
+				 * nuevamente los usuarios
+				 */
 				dispatch(getUsersThunks())
 			} catch (error) {
+				/**
+				 * Aca va la logica para mostarle al usuario si algo salio mal.
+				 */
 				console.log(error);
 			}
 			setIsLoading(false);
