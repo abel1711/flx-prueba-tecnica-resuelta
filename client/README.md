@@ -57,6 +57,7 @@ Es necesario simular un tiempo de carga entre las peticiones con un setTimeOut, 
 - Se utilizó redux solo para mantener a los usuarios, la paginación, filtro y un isLoading para mostrar la tabla, que a su vez se trabaja con un hook.
 - Para crear, editar o eliminar un usuario se utilizaron hooks para el manejo de los modales, los state estan dentro de los hooks asi como tambien las peticiones, lo realice así para no tener que manejar todo con redux, pero se podría haber separado las peticiones asi como lo hice para obtener los usuarios y aplicar el filtro.
 - Se utilizo patron adaptador para uuid, por temas de tiempo no se utilizo para axios pero si se implemento una configuración inicial del mismo.
+- Tener en cuenta que esta activado el modo estricto de react (se disparan useEffect dos veces) .
 
 <a id="sources"></a>
 ## Recursos 
