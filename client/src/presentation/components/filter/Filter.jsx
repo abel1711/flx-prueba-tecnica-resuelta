@@ -1,5 +1,5 @@
 import { Input, Select, Space } from 'antd';
-import { useFilter } from '../../hooks';
+import { useFilter } from '@hooks';
 import './filter.css';
 
 export const Filter = () => {
@@ -43,5 +43,5 @@ export const Filter = () => {
 
             </Space>
         </div>
-    )
-}
+    );
+};

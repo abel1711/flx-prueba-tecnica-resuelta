@@ -1,9 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { Id } from "../../config/adapter/id";
-import { userApi } from "../../config/api/user-api";
-import { setUserEdited } from "../redux/features/users/usersSlice";
-import { getUsersThunks } from "../redux/features/users/usersThunks";
+import { Id, userApi } from "@config";
+import { setUserEdited, getUsersThunks } from "@redux";
 
 /**
  * Estas constantes podrian estar en un archivo separado
@@ -43,7 +41,7 @@ const INITIALFORM = {
     lastname: '',
     status: '',
     age: '',
-}
+};
 
 const SELECT_OPTIONS = [
     {
@@ -54,7 +52,7 @@ const SELECT_OPTIONS = [
         value: 'inactive',
         label: 'Inactivo',
     },
-]
+];
 
 export const useModalUser = () => {
 
@@ -65,11 +63,11 @@ export const useModalUser = () => {
 
     const openModal = () => {
         setIsOpen(true);
-    }
+    };
 
     const closeModal = () => {
         setIsOpen(false);
-    }
+    };
 
     const handleSubmit = async (values, user) => {
 
@@ -79,9 +77,9 @@ export const useModalUser = () => {
 
             if (user?.id) {
                 try {
-                    const body = { ...values, age: Number(values.age) } //age desde el input viene como string, lo convierto en numero para guardarlo en la base de datos
+                    const body = { ...values, age: Number(values.age) }; //age desde el input viene como string, lo convierto en numero para guardarlo en la base de datos
                     const { data } = await userApi.put(`/users/${user.id}`, body);
-                    dispatch(setUserEdited(data))
+                    dispatch(setUserEdited(data));
                     /**
                      * Se aprovecho que json-server devuelve el usuario editado para agregarlo
                      * al state sin tener que hacer otra petición
@@ -91,39 +89,42 @@ export const useModalUser = () => {
                      * Aca falta un feedback para que el usuario sea notificado de que algo salío mal
                      */
                     console.log(error);
-                }
+                } finally {
+                    setIsLoading(false);
+                    setIsOpen(false)
+                };
+
             } else {
 
                 const body = {
                     ...values,
                     age: Number(values.age),//age desde el input viene como string, lo convierto en numero para guardarlo en la base de datos
                     id: new Id().newId()
-                    /**
-                     * se adapto uuid por si en un futuro se necesita generar los ids de otra manera
-                     * solo deberiamos cambiar en la clase como se genera el id
-                     */
-                }
+                };
+                /**
+                 * se adapto uuid por si en un futuro se necesita generar los ids de otra manera
+                 * solo deberiamos cambiar en la clase como se genera el id
+                 */
                 try {
                     await userApi.post('/users', body);
-                    dispatch(getUsersThunks())
+                    dispatch(getUsersThunks());
                     /**
                      * En este punto json-server me devuelve el usuario que cree, pero como esta paginado
                      * no serviria realmente agregarlo a los users de mi state, por eso se realiza una nueva petición
                      * para que rellene la tabla con los usuarios.
                      */
                 } catch (error) {
-                    console.log(error)
+                    console.log(error);
                     /**
                       * Aca falta un feedback para que el usuario sea notificado de que algo salío mal
                       */
-                }
+                } finally {
+                    setIsLoading(false);
+                    setIsOpen(false)
+                };
             }
-            setIsLoading(false);
-            setIsOpen(false)
         }, 1000);
-    }
-
-
+    };
 
     return {
         isOpen,
@@ -134,5 +135,5 @@ export const useModalUser = () => {
         openModal,
         closeModal,
         handleSubmit,
-    }
-}
+    };
+};

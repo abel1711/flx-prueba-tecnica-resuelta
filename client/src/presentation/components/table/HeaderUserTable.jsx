@@ -1,7 +1,6 @@
-import { Filter } from '../filter/Filter'
-import { ModalUser } from '../modalUser/ModalUser'
+import { ModalUser, Filter } from '@components';
 
-import './users-table.css'
+import './users-table.css';
 
 export const HeaderUserTable = () => {
     return (
@@ -9,5 +8,5 @@ export const HeaderUserTable = () => {
             <Filter />
             <ModalUser /> {/**modal para crear usuario */}
         </div>
-    )
-}
+    );
+};

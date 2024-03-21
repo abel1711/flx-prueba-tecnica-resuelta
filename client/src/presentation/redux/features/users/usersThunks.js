@@ -1,7 +1,5 @@
-import { userApi } from "../../../../config/api/user-api";
-import { setUsers, startFetch } from "./usersSlice"
-
-
+import { userApi } from "@config";
+import { setUsers, startFetch } from "@redux";
 
 export const getUsersThunks = (page = 0) => {
 
@@ -31,8 +29,8 @@ export const getUsersThunks = (page = 0) => {
                 ])
                 dispatch(setUsers({ data, total: total.length, page: page + 1 }));
             } catch (error) {
-                console.log(error)
-            }
+                console.log(error);
+            };
         }, 1000);
-    }
-}
+    };
+};

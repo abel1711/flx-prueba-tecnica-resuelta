@@ -1,5 +1,5 @@
 import { Button, Divider, Modal, Typography } from "antd";
-import { useModalDelUser } from "../../hooks/useModalDelUser";
+import { useModalDelUser } from "@hooks";
 
 export const ModalDelUser = ({ user }) => {
 
@@ -40,5 +40,5 @@ export const ModalDelUser = ({ user }) => {
             </Modal>
 
         </div>
-    )
-}
+    );
+};

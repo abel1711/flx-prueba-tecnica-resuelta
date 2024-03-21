@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { userApi } from "../../config/api/user-api";
-import { getUsersThunks } from "../redux/features/users/usersThunks";
+import { userApi } from "@config";
+import { getUsersThunks } from "@redux";
 
 export const useModalDelUser = () => {
 
@@ -15,7 +15,7 @@ export const useModalDelUser = () => {
 
 	const open = () => {
 		setIsOpen(true);
-	}
+	};
 
 	const onConfirm = (id) => {
 		setIsLoading(true);
@@ -26,7 +26,7 @@ export const useModalDelUser = () => {
 				 * En este punto Json-server no me devuelve "{}" por eso se hace el dispatch para traer
 				 * nuevamente los usuarios
 				 */
-				dispatch(getUsersThunks())
+				dispatch(getUsersThunks());
 			} catch (error) {
 				/**
 				 * Aca va la logica para mostarle al usuario si algo salio mal.
@@ -36,7 +36,7 @@ export const useModalDelUser = () => {
 			setIsLoading(false);
 			setIsOpen(false);
 		}, 1000);
-	}
+	};
 
 	return {
 		close,
@@ -44,5 +44,5 @@ export const useModalDelUser = () => {
 		isOpen,
 		onConfirm,
 		open,
-	}
-}
+	};
+};

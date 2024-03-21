@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux';
 import { Table } from 'antd';
-import { useUserTable } from '../../hooks';
+import { useUserTable } from '@hooks';
+
 import './users-table.css';
 
 export const UserTable = () => {
@@ -30,6 +31,5 @@ export const UserTable = () => {
             }}
             size='small'
         />
-
-    )
-}
+    );
+};

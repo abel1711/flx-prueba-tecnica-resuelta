@@ -1,4 +1,4 @@
-import { UserTable, HeaderUserTable } from "../../components";
+import { UserTable, HeaderUserTable } from "@components";
 import './users-screen.css';
 
 export const UsersScreen = () => {
@@ -7,5 +7,5 @@ export const UsersScreen = () => {
       <HeaderUserTable />
       <UserTable />
     </div>
-  )
-}
+  );
+};

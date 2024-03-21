@@ -1,5 +1,5 @@
-import { Breadcrum, Navbar } from "../components"
-import { UsersScreen } from "../screens";
+import { Breadcrum, Navbar } from "@components";
+import { UsersScreen } from "@screens";
 
 /**
  * En este componente crearíamos la navegacion de la aplicación
@@ -17,7 +17,7 @@ const itemsBreadcrum = [
     {
         title: 'Listado de usuarios'
     }
-]
+];
 
 export const RouterApp = () => {
     return (
@@ -26,5 +26,5 @@ export const RouterApp = () => {
             <Breadcrum items={itemsBreadcrum} />
             <UsersScreen />
         </div>
-    )
-}
+    );
+};

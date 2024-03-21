@@ -8,7 +8,7 @@ import {
     Select,
     Spin
 } from 'antd';
-import { useModalUser } from '../../hooks/useModalUser';
+import { useModalUser } from '@hooks';
 
 import './modal-user.css';
 
@@ -28,8 +28,8 @@ const CustomFormItem = ({ name = '', label = '', rules = [], placeholder = '', t
         >
             <Input placeholder={placeholder} type={type} />
         </Form.Item>
-    )
-}
+    );
+};
 
 /**
  * no se exporto este componente porque solo se usa en este modal 
@@ -41,7 +41,7 @@ const CustomFlex = ({ children, justify }) => {
             {children}
         </Flex>
     );
-}
+};
 
 export const ModalUser = ({ user, labelButton = 'Agregar Usuario', typeButton = 'primary', editMode = false }) => {
 
@@ -155,5 +155,5 @@ export const ModalUser = ({ user, labelButton = 'Agregar Usuario', typeButton = 
                 </Form>
             </Modal>
         </>
-    )
-}
+    );
+};

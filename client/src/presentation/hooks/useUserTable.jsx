@@ -1,9 +1,8 @@
 import { Flex, Tag } from "antd";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { ModalDelUser } from "../components/modalDelUser/ModalDelUser";
-import { ModalUser } from "../components/modalUser/ModalUser";
-import { getUsersThunks } from "../redux/features/users/usersThunks";
+import { ModalDelUser, ModalUser } from "@components";
+import { getUsersThunks } from "@redux";
 
 const COLUMNS = [
     {
@@ -54,7 +53,7 @@ export const useUserTable = () => {
 
     useEffect(() => {
         getUsers();
-    }, [])
+    }, []);
 
     const getUsers = (page = 0) => {
         dispatch(getUsersThunks(page));
@@ -65,4 +64,3 @@ export const useUserTable = () => {
         getUsers
     };
 };
-
