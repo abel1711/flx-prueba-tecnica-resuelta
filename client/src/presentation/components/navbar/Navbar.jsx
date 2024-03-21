@@ -6,5 +6,5 @@ export const Navbar = () => {
     <nav className='navbar'>
       <img src={LogoFlexxus} alt="logo-flexxus" />
     </nav>
-  )
-}
+  );
+};

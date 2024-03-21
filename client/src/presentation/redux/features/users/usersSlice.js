@@ -12,7 +12,7 @@ const initialState = {
         name: '',
         status: '',
     }
-}
+};
 
 export const usersSlice = createSlice({
     name: 'users',
@@ -40,7 +40,7 @@ export const usersSlice = createSlice({
             state.filter.status = action.payload
         },
     }
-})
+});
 
 export const {
     setFilterByName,
@@ -48,4 +48,4 @@ export const {
     setUserEdited,
     setUsers,
     startFetch,
-} = usersSlice.actions
+} = usersSlice.actions;
