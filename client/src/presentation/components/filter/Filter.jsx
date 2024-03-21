@@ -1,19 +1,13 @@
 import { Input, Select, Space } from 'antd';
+import { useFilter } from '../../hooks';
 import './filter.css';
-import { useDispatch } from 'react-redux';
-import { setFilterByName, setFilterByStatus } from '../../redux/features/users/usersSlice';
 
 export const Filter = () => {
 
-    const dispatch = useDispatch();
-
-    const handleFilterByStatus = (value) => {
-        dispatch(setFilterByStatus(value));
-    };
-
-    const handleFilterByName = (value = '') => {
-        dispatch(setFilterByName(value.trim()))
-    };
+    const {
+        handleFilterByName,
+        handleFilterByStatus
+    } = useFilter();
 
     return (
         <div>
