@@ -1,6 +1,6 @@
 import { Tag } from "antd";
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { ModalDelUser } from "../components/modalDelUser/ModalDelUser";
 import { ModalUser } from "../components/modalUser/ModalUser";
 import { getUsersThunks } from "../redux/features/users/usersThunks";
@@ -49,16 +49,10 @@ const COLUMNS = [
 export const useUserTable = () => {
 
     const dispatch = useDispatch();
-    const { filter } = useSelector(state => state.appState);
-
 
     useEffect(() => {
         getUsers();
     }, [])
-
-    useEffect(() => {
-        getUsers()
-    }, [filter]);
 
     const getUsers = (page = 0) => {
         dispatch(getUsersThunks(page));
