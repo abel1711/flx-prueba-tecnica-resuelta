@@ -4,3 +4,4 @@ export * from './filter/Filter.jsx';
 export * from './table/UserTable.jsx';
 export * from './table/HeaderUserTable.jsx';
 export * from './modalUser/ModalUser.jsx';
+export * from './modalDelUser/ModalDelUser.jsx';
